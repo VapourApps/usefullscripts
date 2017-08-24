@@ -5,7 +5,7 @@ if [ "$#" -eq 0 ]; then
 	echo "First argument is fqdn, optional arguments are country, city and company, in that order, last argument is state, if applicable"
 	exit 1
 fi
-if [ "$#" -gt 1 ]; then
+if [ "$#" -ge 1 ]; then
 	SUBJECT="/C=MK/ST=MK/L=Skopje/O=Firma/OU=IT/CN=$NAME"
 fi
 if [ "$#" -eq 4 ]; then
