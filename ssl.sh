@@ -22,9 +22,8 @@ if [ "$#" -eq 5 ]; then
         STATE="${@:5:1}"
         SUBJECT="/C=$COUNTRY/ST=$STATE/L=$CITY/O=$COMPANY/OU=IT/CN=$NAME"
 fi
-openssl genrsa -des3 -passout pass:x -out $NAME.pass.key 2048
+openssl genrsa -out $NAME.key 2048
 openssl rsa -passin pass:x -in $NAME.pass.key -out $NAME.key
-rm $NAME.pass.key
 openssl req -new -key $NAME.key -out $NAME.csr -subj $SUBJECT
 openssl x509 -req -sha256 -days 365 -in $NAME.csr -signkey $NAME.key -out $NAME.crt
 
